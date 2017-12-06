@@ -1,0 +1,16 @@
+{
+  "name": "r6streamoverlays",
+  "version": "0.1.0",
+  "description": "Overlay widgets for R6 streamers",
+  "main": "index.html",
+  "repository": "Swizz/R6StreamOverlays",
+  "author": "Quentin Gerodel (Swizz)",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "parcel -p 5000 index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.0.2"
+  }
+}

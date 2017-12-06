@@ -1,0 +1,13 @@
+# IDE
+.idea/
+.vscode/
+
+# Builds
+.cache/
+dist/
+
+# NPM
+*.log*
+node_modules/
+yarn.lock
+package-lock.json
