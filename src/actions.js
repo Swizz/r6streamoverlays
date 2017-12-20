@@ -1,6 +1,6 @@
 export default {
   init() {
-    const [plateform, user] = location.hash.slice(1).split("/")
+    const [plateform, _, user] = location.hash.slice(1).split("/")
 
     if(!user || !plateform) return false
     return state => actions =>

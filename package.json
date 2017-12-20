@@ -2,18 +2,22 @@
   "name": "index",
   "version": "0.1.0",
   "description": "Overlay widgets for R6 streamers",
-  "main": "src/index.html",
+  "main": "statics/index.html",
   "repository": "Swizz/R6StreamOverlays",
   "author": "Quentin Gerodel (Swizz)",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "parcel $npm_package_main"
+    "dev": "parcel statics/index.html",
+    "build": "parcel build statics/index.html --public-url ./ && svgo dist/*.svg"
   },
   "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.1",
-    "parcel-bundler": "^1.0.2"
+    "parcel-bundler": "^1.1.0",
+    "postcss-nested": "^2.1.2",
+    "svgo": "^1.0.3"
   },
   "dependencies": {
     "hyperapp": "^0.16.2"
