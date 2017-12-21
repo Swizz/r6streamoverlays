@@ -9,7 +9,8 @@
   "private": true,
   "scripts": {
     "dev": "parcel statics/index.html",
-    "build": "parcel build statics/index.html --public-url ./ && svgo dist/*.svg"
+    "build": "parcel build statics/index.html --public-url ./ --out-dir docs && npm run postbuild",
+    "postbuild": "svgo docs/*.svg && cp docs/index.html docs/404.html && cp docs/index.html docs/200.html"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
