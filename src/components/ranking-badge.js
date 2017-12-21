@@ -1,8 +1,8 @@
-import { h } from "hyperapp"
+import { h as jsx } from "hyperapp"
 
 import sprite from "../../statics/sprite.svg"
 
-export default function (props) {
+export default function RankingBadge(props) {
   return (
     <g {...props}>
       <use href={`${sprite}#${props.rank}-usage`} transform="translate(50) scale(0.8)"/>

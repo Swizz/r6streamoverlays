@@ -1,40 +1,42 @@
 import { h, app } from "hyperapp"
+import { Switch, Route, location as router } from "@hyperapp/router"
 
-import rankingActions from "./actions"
+import actions from "./actions"
 import view from "./view"
 
-const actions = {
-  ranking: rankingActions,
+import Rank from "./widgets/rank"
+import RanksBanner from "./widgets/ranks-banner"
+import RankScoring from "./widgets/rank-scoring"
 
-  init() {
-    if (location.hash === "") {
-      return (location.hash = "#uplay/emea/sha77e.-penta")
-    }
+const application = app({
+  location: router.state
+}, actions, (state, actions) => (
+  <Switch>
+    <Route path="/" render={() => view(state, actions)}/>
+    <Route path="/rank" render={() => Rank(state, actions)}/>
+    <Route path="/ranks-banner" render={() => RanksBanner(state, actions)}/>
+    <Route path="/rank-scoring" render={() => RankScoring(state, actions)}/>
+  </Switch>
+), document.body)
 
-    const [plateform, region, user] = location.hash.slice(1).split("/")
+router.subscribe(application.location)
 
-    return state => actions => {
-      actions.ranking.init()
-      actions.populate({ plateform, region, user })
-    }
-  },
+application.init()
+addEventListener("hashchange", application.init)
 
-  populate(newState) {
-    return newState
+setInterval(function() {
+  if(location.pathname !== "/") {
+    application.refresh()
   }
-}
+}, 15000)
 
-const index = app({ state: {}, actions, view })
-
-index.init()
-addEventListener("hashchange", index.init)
-
-let last = false
-setInterval(function () {
-  if (!document.hidden) {
-    document.title = last ? "Streamers ❤️ R6" : "We ❤️ Streamers"
-    last = !last
-  } else {
-    document.title = "Streamers ❤️ R6"
-  }
-}, 1500)
+;(function(last) {
+  setInterval(function () {
+    if (!document.hidden) {
+      document.title = last ? "Streamers ❤️ R6" : "We ❤️ Streamers"
+      last = !last
+    } else {
+      document.title = "Streamers ❤️ R6"
+    }
+  }, 1500)
+})(false)

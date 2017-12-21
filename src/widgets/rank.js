@@ -1,26 +1,19 @@
-import { h, app } from "hyperapp"
-import actions from "../actions"
+import { h as jsx } from "hyperapp"
 
-import Ranking from "../components/ranking"
+import RankingBadge from "../components/ranking-badge"
 
-export default container => app({
-  state: {},
-  actions,
-  view(state) {
-    const lastSeason = state.seasons && state.seasons[Object.keys(state.seasons).slice(-1)[0]]
+export default function view(state) {
+  const lastSeason = state.ranking && state.ranking.seasons && state.ranking.seasons[Object.keys(state.ranking.seasons).slice(-1)[0]]
 
-    const [_, region, __] = location.hash.slice(1).split("/")
+  const currentSeason = lastSeason && lastSeason[state.region] ? lastSeason[state.region] : {}
 
-    const currentSeason = lastSeason && lastSeason[region] ? lastSeason[region] : {}
+  const currentRanking = currentSeason.ranking ? currentSeason.ranking : {}
 
-    const currentRanking = currentSeason.ranking ? currentSeason.ranking : {}
-
-    return (
+  return (
+    <widget>
       <svg width="100vw" height="50vw">
-        <Ranking rank={currentRanking.rank || 0} nb-matches={currentSeason.wins + currentSeason.losses + currentSeason.abandons || 0} rating={currentRanking.rank > 0 && currentRanking.rating} key="rating"/>
+        <RankingBadge rank={currentRanking.rank || 0} nb-matches={currentSeason.wins + currentSeason.losses + currentSeason.abandons || 0} rating={currentRanking.rank > 0 && currentRanking.rating} key="rating"/>
       </svg>
-    )
-  }
-},
-  container
-)
+    </widget>
+  )
+}
