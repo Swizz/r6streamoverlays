@@ -47,21 +47,21 @@ export default function view(state, actions) {
             <p>Shows to all your viewers, your hilighted current Rainbow Six Siege rank and the MMR scoring, <br/>
               with the neirboroud ranks to know the previous rank and the upcoming one with MMR scoring too.</p>
             <RanksBanner {...state}/>
-            <input id="ranks-banner-url" type="text" value={`${location.origin}/ranks-banner#${state.plateform}/${state.region}/${state.user}`}/>
+            <input id="ranks-banner-url" type="text" value={`${location.origin}${location.pathname}ranks-banner#${state.plateform}/${state.region}/${state.user}`}/>
             <button onclick={copy("ranks-banner-url")}>copy</button>
           </section>
           <section>
             <h3># Rank</h3>
             <p>Shows to all your viewers, your hilighted current Rainbow Six Siege rank and the MMR scoring.</p>
             <Rank {...state}/>
-            <input id="rank-url" type="text" value={`${location.origin}/rank#${state.plateform}/${state.region}/${state.user}`}/>
+            <input id="rank-url" type="text" value={`${location.origin}${location.pathname}rank#${state.plateform}/${state.region}/${state.user}`}/>
             <button onclick={copy("rank-url")}>copy</button>
           </section>
           <section>
             <h3># Ranks scoring</h3>
             <p>Shows to all your viewers, your current Rainbow Six Siege rank with statistics about your wins and losses.</p>
             <RankScoring {...state}/>
-            <input id="rank-scoring-url" type="text" value={`${location.origin}/rank-scoring#${state.plateform}/${state.region}/${state.user}`}/>
+            <input id="rank-scoring-url" type="text" value={`${location.origin}${location.pathname}rank-scoring#${state.plateform}/${state.region}/${state.user}`}/>
             <button onclick={copy("rank-scoring-url")}>copy</button>
           </section>
         </div>

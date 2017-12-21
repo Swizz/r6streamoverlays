@@ -12,10 +12,10 @@ const application = app({
   location: router.state
 }, actions, (state, actions) => (
   <Switch>
-    <Route path="/" render={() => view(state, actions)}/>
-    <Route path="/rank" render={() => Rank(state, actions)}/>
-    <Route path="/ranks-banner" render={() => RanksBanner(state, actions)}/>
-    <Route path="/rank-scoring" render={() => RankScoring(state, actions)}/>
+    <Route path="/r6streamoverlays" render={() => view(state, actions)}/>
+    <Route path="/r6streamoverlays/rank" render={() => Rank(state, actions)}/>
+    <Route path="/r6streamoverlays/ranks-banner" render={() => RanksBanner(state, actions)}/>
+    <Route path="/r6streamoverlays/rank-scoring" render={() => RankScoring(state, actions)}/>
   </Switch>
 ), document.body)
 
