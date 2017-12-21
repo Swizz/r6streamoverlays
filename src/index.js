@@ -1,4 +1,4 @@
-import { h, app } from "hyperapp"
+import { h as jsx, app } from "hyperapp"
 import { Switch, Route, location as router } from "@hyperapp/router"
 
 import actions from "./actions"
