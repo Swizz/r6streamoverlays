@@ -19,6 +19,12 @@ html, body {
   width: 100%;
 }
 
+body > widget {
+  height: 100%;
+  width: 100%;
+  background: green;
+}
+
 button, select {
   cursor: pointer;
 }
