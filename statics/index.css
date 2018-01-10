@@ -15,14 +15,7 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Noto Sans', 'Open Sans', Times, 'Times New Roman', sans-serif;
-  background: #fefefe;
   width: 100%;
-}
-
-body > widget {
-  height: 100%;
-  width: 100%;
-  background: green;
 }
 
 button, select {
@@ -111,6 +104,7 @@ main {
   max-width: 1080px;
   margin: 0 auto;
   color:#444;
+  background: #fefefe;
   font-size:16px;
   line-height:1.5em;
 
