@@ -10,7 +10,7 @@ import Rank from "./widgets/rank"
 import RanksBanner from "./widgets/ranks-banner"
 import RankScoring from "./widgets/rank-scoring"
 
-const tracker = new analytics("FmRHMrj5SggTeKNvi")
+const tracker = new analytics("FmRHMrj5SggTeKNvi", false)
 
 const application = app({
   location: router.state
@@ -26,10 +26,7 @@ const application = app({
 router.subscribe(application.location)
 
 application.init(tracker)
-addEventListener("hashchange", () => {
-  tracker.track()
-  application.init(tracker)
-})
+addEventListener("hashchange", () => application.init(tracker))
 
 setInterval(function() {
   if(location.pathname !== "/") {

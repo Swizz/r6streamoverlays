@@ -19,9 +19,7 @@ export default {
 
     const [plateform, region, user] = location.hash.slice(1).split("/")
 
-    tracker.pushEvent("plateform", plateform)
-    tracker.pushEvent("region", region)
-    tracker.pushEvent("user", user)
+    tracker && tracker.track()
 
     return (state, actions) => {
       actions.resetRanking()

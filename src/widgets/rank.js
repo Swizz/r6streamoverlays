@@ -10,7 +10,14 @@ export default function view(state, _, tracker) {
   const currentRanking = currentSeason.ranking ? currentSeason.ranking : {}
 
   return (
-    <widget oncreate={() => tracker && tracker.pushEvent("widget", "rank")}>
+    <widget oncreate={() => {
+      if(tracker) {
+        tracker.pushEvent("widget", "rank")
+        // tracker.pushEvent("plateform", plateform)
+        // tracker.pushEvent("region", state.region)
+        tracker.pushEvent("user", state.user)
+      }
+    }}>
       <svg width="100vw" height="50vw">
         <RankingBadge rank={currentRanking.rank || 0} nb-matches={currentSeason.wins + currentSeason.losses + currentSeason.abandons || 0} rating={currentRanking.rank > 0 && currentRanking.rating} key="rating"/>
       </svg>
