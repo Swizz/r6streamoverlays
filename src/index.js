@@ -10,7 +10,7 @@ import Rank from "./widgets/rank"
 import RanksBanner from "./widgets/ranks-banner"
 import RankScoring from "./widgets/rank-scoring"
 
-const tracker = new analytics("8Fd8Cw3gp6Sw8ggKu")
+const tracker = new analytics("FmRHMrj5SggTeKNvi")
 
 const application = app({
   location: router.state
