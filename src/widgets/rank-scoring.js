@@ -10,11 +10,11 @@ export default function view(state) {
   return (
     <widget>
       <svg width="100vw" height="50vw">
-        <RankingBadge rank={currentSeason.ranking && currentSeason.ranking.rank || 0} key="rating" opacity="0.5"/>
-        <text x="50%" y="40%" text-anchor="middle" font-family="Open Sans" font-size="40" fill="#ffd700">
+        <RankingBadge rank={currentSeason.ranking && currentSeason.ranking.rank || 0} key="rating" opacity="0.4"/>
+        <text x="50%" y="40%" text-anchor="middle" font-family="Open Sans" font-size="40" font-weight="600" fill="#ffd700">
           W: {currentSeason.wins}
         </text>
-        <text x="50%" y="60%" text-anchor="middle" font-family="Open Sans" font-size="40" fill="#ffd700">
+        <text x="50%" y="60%" text-anchor="middle" font-family="Open Sans" font-size="40" font-weight="600" fill="#ffd700">
           L: {currentSeason.losses}
         </text>
       </svg>
