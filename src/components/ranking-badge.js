@@ -12,7 +12,7 @@ export default function RankingBadge(props) {
         </text>
           :
         <text x="50%" y="90%" text-anchor="middle" font-family="Noto Sans" font-size="35" fill="#ffffff">
-          {Math.round(props.rating || 0) || props["rating-default"]}
+          {Math.floor(props.rating || 0) || props["rating-default"]}
         </text>
       }
     </g>
