@@ -1,5 +1,9 @@
 import { location as router } from "@hyperapp/router"
 
+import analytics from "ostrio-analytics"
+
+const tracker = new analytics("SCDnq29vZYfHwbc6L")
+
 export default {
   location: router.actions,
 
@@ -18,6 +22,10 @@ export default {
     }
 
     const [plateform, region, user] = location.hash.slice(1).split("/")
+
+    tracker.pushEvent("plateform", plateform)
+    tracker.pushEvent("region", region)
+    tracker.pushEvent("user", user)
 
     return (state, actions) => {
       actions.resetRanking()
