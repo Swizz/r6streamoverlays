@@ -28,7 +28,7 @@ setInterval(function() {
   if(location.pathname !== "/") {
     application.refresh()
   }
-}, 15000)
+}, 30000)
 
 ;(function(last) {
   setInterval(function () {
