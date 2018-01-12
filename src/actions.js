@@ -1,13 +1,9 @@
 import { location as router } from "@hyperapp/router"
 
-import analytics from "ostrio-analytics"
-
-const tracker = new analytics("SCDnq29vZYfHwbc6L")
-
 export default {
   location: router.actions,
 
-  init() {
+  init(tracker) {
     if (location.hash === "") {
       const candidates = [
         ["sha77e.-penta", "emea"],

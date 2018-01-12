@@ -1,6 +1,8 @@
 import { h as jsx, app } from "hyperapp"
 import { Switch, Route, location as router } from "@hyperapp/router"
 
+import analytics from "ostrio-analytics"
+
 import actions from "./actions"
 import view from "./view"
 
@@ -8,21 +10,26 @@ import Rank from "./widgets/rank"
 import RanksBanner from "./widgets/ranks-banner"
 import RankScoring from "./widgets/rank-scoring"
 
+const tracker = new analytics("SCDnq29vZYfHwbc6L")
+
 const application = app({
   location: router.state
 }, actions, (state, actions) => (
   <Switch>
-    <Route path="/r6streamoverlays" render={() => view(state, actions)}/>
-    <Route path="/r6streamoverlays/rank" render={() => Rank(state, actions)}/>
-    <Route path="/r6streamoverlays/ranks-banner" render={() => RanksBanner(state, actions)}/>
-    <Route path="/r6streamoverlays/rank-scoring" render={() => RankScoring(state, actions)}/>
+    <Route path="/r6streamoverlays" render={() => view(state, actions, tracker)}/>
+    <Route path="/r6streamoverlays/rank" render={() => Rank(state, actions, tracker)}/>
+    <Route path="/r6streamoverlays/ranks-banner" render={() => RanksBanner(state, actions, tracker)}/>
+    <Route path="/r6streamoverlays/rank-scoring" render={() => RankScoring(state, actions, tracker)}/>
   </Switch>
 ), document.body)
 
 router.subscribe(application.location)
 
-application.init()
-addEventListener("hashchange", application.init)
+application.init(tracker)
+addEventListener("hashchange", () => {
+  tracker.track()
+  application.init(tracker)
+})
 
 setInterval(function() {
   if(location.pathname !== "/") {

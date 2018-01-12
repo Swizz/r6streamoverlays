@@ -1,12 +1,8 @@
 import { h as jsx } from "hyperapp"
 
-import analytics from "ostrio-analytics"
-
 import Rank from "./widgets/rank"
 import RanksBanner from "./widgets/ranks-banner"
 import RankScoring from "./widgets/rank-scoring"
-
-const tracker = new analytics("SCDnq29vZYfHwbc6L")
 
 export default function view(state, actions) {
   function copy(input) {
@@ -17,7 +13,7 @@ export default function view(state, actions) {
   }
 
   return (
-    <index oncreate={() => tracker.pushEvent("view", "index")}>
+    <index>
       <header>
         <div class="title">
           <h1>Streamers <i>♥️</i> R6</h1>
