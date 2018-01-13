@@ -14,6 +14,7 @@ export default function view(state, _, tracker) {
         // tracker.pushEvent("plateform", plateform)
         // tracker.pushEvent("region", state.region)
         tracker.pushEvent("user", state.user)
+        setInterval(() => tracker.track(), 15*60000)
       }
     }}>
       <svg width="100vw" height="50vw">

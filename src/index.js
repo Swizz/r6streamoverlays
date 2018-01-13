@@ -25,8 +25,10 @@ const application = app({
 
 router.subscribe(application.location)
 
-application.init(tracker)
-addEventListener("hashchange", () => application.init(tracker))
+tracker.track()
+
+application.init()
+addEventListener("hashchange", () => application.init())
 
 setInterval(function() {
   if(location.pathname !== "/") {

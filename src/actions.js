@@ -3,7 +3,7 @@ import { location as router } from "@hyperapp/router"
 export default {
   location: router.actions,
 
-  init(tracker) {
+  init() {
     if (location.hash === "") {
       const candidates = [
         ["sha77e.-penta", "emea"],
@@ -18,8 +18,6 @@ export default {
     }
 
     const [plateform, region, user] = location.hash.slice(1).split("/")
-
-    tracker && tracker.track()
 
     return (state, actions) => {
       actions.resetRanking()
